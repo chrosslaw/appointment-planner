@@ -17,26 +17,43 @@ export const ContactsPage = (props) => {
     Add contact info and clear data
     if the contact name is not a duplicate
     */
-    const newName = e.target.value;
     if (!duplicate) {
+      addContact(name, phone, email);
+      setName("");
+      setPhone("");
+      setEmail("");
     }
   };
-
   /*
-  Using hooks, check for contact name in the 
+  Using hooks, check for contact name in the
   contacts array variable in props
   */
+  useEffect(() => {
+    for (let contact in contacts) {
+      if (name === contact.name) {
+        setDuplicate(true);
+      }
+    }
+  }, [name, contacts]);
 
   return (
     <div>
       <section>
         <h2>Add Contact</h2>
-        <ContactForm name={name} phone={phone} email={email} />
+        <ContactForm
+          name={name}
+          setName={setName}
+          phone={phone}
+          setPhone={setPhone}
+          email={email}
+          setEmail={setEmail}
+          handleSubmit={handleSubmit}
+        />
       </section>
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList />
+        <TileList contacts={contacts} />
       </section>
     </div>
   );
