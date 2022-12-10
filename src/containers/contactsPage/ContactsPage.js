@@ -26,17 +26,22 @@ export const ContactsPage = ({ contacts, addContact }) => {
   contacts array variable in props
   */
   useEffect(() => {
-    for (let contact in contacts) {
-      if (name === contact.name) {
-        setDuplicate(true);
-      }
+    const duplicateName = () => {
+      return contacts.find((contact) => contact.name === name) ? true : false;
+    };
+
+    if (duplicateName()) {
+      setDuplicate(true);
+    } else {
+      setDuplicate(false);
     }
-  }, [name, contacts]);
+  }, [name, contacts, duplicate]);
 
   return (
     <div>
       <section>
         <h2>Add Contact</h2>
+        <h3>{duplicate ? "Name is taken" : ""}</h3>
         <ContactForm
           name={name}
           setName={setName}

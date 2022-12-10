@@ -22,10 +22,25 @@ function App() {
   contacts and appointments
   */
   const addContact = (name, phone, email) => {
-    setContacts((prev) => [...prev, { name, phone, email }]);
+    setContacts([
+      ...contacts,
+      {
+        name: name,
+        phone: phone,
+        email: email,
+      },
+    ]);
   };
   const addAppointment = (title, date, time, contact) => {
-    setAppointments((prev) => [...prev, { title, date, time, contact }]);
+    setAppointments([
+      ...appointments,
+      {
+        title: title,
+        date: date,
+        time: time,
+        contact: contact,
+      },
+    ]);
   };
 
   return (
@@ -51,6 +66,7 @@ function App() {
             {/* Add props to AppointmentsPage */}
             <AppointmentsPage
               appointments={appointments}
+              contacts={contacts}
               addAppointment={addAppointment}
             />
           </Route>

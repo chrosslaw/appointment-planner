@@ -16,6 +16,7 @@ export const ContactForm = ({
         <input
           required
           type="text"
+          name="name"
           value={name}
           onChange={(e) => {
             setName(e.target.value);
@@ -27,6 +28,7 @@ export const ContactForm = ({
         <input
           required
           type="tel"
+          name="phone"
           value={phone}
           pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$"
           onChange={(e) => {
@@ -39,6 +41,7 @@ export const ContactForm = ({
         <input
           required
           type="email"
+          name="email"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
