@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 
-export const ContactsPage = (props) => {
-  const contacts = props.contacts;
-  const addContact = props.addContact;
-
+export const ContactsPage = ({ contacts, addContact }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -53,7 +50,7 @@ export const ContactsPage = (props) => {
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList contacts={contacts} />
+        <TileList listData={contacts} />
       </section>
     </div>
   );
